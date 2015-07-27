@@ -1,0 +1,13 @@
+[Service]
+ExecStart=/usr/bin/nodejs index.js
+Restart=always
+StandardOutput=syslog
+SyslogIdentifier=dsc
+User=diana
+Group=diana
+#Environment=NODE_ENV=production
+WorkingDirectory=/home/diana/dsc/
+
+[Install]
+WantedBy=multi-user.target
+Alias=dsc.service

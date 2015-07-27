@@ -1,0 +1,35 @@
+---
+- hosts: dsc
+  remote_user: diana
+  vars:
+    username: gui
+
+  tasks:
+  - name: Install dwm
+    apt: pkg=dwm state=latest
+    sudo: yes
+  - name: Install suckless-tools
+    apt: pkg=suckless-tools state=latest
+    sudo: yes
+  - name: Install xinit
+    apt: pkg=xinit state=latest
+    sudo: yes
+  - name: Install surf
+    apt: pkg=surf state=latest
+    sudo: yes
+
+  - name: Add user gui
+    user: name=gui shell=/bin/bash
+    sudo: yes
+  - name: Set up Autologin for gui on tty1 (1)
+    file: path=/etc/systemd/system/getty@tty1.service.d state=directory mode=0755
+    sudo: yes
+  - name: Set up Autologin for gui on tty1 (2)
+    template: src=autologin.conf dest=/etc/systemd/system/getty@tty1.service.d/autologin.conf
+    sudo: yes
+  - name: Set .bash_profile form gui
+    template: src=bash_profile dest=/home/gui/.bash_profile mode=0700 owner=dsc group=dsc
+    sudo: yes
+  - name: Set .xinitrc from gui
+    template: src=xinitrc dest=/home/gui/.xinitrc mode=0700 owner=dsc group=dsc
+    sudo: yes

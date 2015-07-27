@@ -1,0 +1,3 @@
+(sleep 2 && surf 127.0.0.1:3000) &
+
+exec dwm

@@ -1,0 +1,5 @@
+surf 127.0.0.1:3000 &
+
+#if [ -z "$DISPLAY" ] && [ $(tty) = /dev/tty1 ]; then
+	startx
+#fi

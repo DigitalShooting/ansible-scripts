@@ -5,17 +5,13 @@
     username: gui
 
   tasks:
-  - name: Install dwm
-    apt: pkg=dwm state=latest
-    sudo: yes
-  - name: Install suckless-tools
-    apt: pkg=suckless-tools state=latest
-    sudo: yes
-  - name: Install xinit
-    apt: pkg=xinit state=latest
-    sudo: yes
-  - name: Install surf
-    apt: pkg=surf state=latest
+  - name: Install dwm, suckless-tools, xinit and surf
+    apt: name={{item} state=latest
+    with_items:
+    - dwm
+    - suckless-tools
+    - xinit
+    - surf
     sudo: yes
 
   - name: Add user gui

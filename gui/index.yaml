@@ -24,8 +24,8 @@
     template: src=autologin.conf dest=/etc/systemd/system/getty@tty1.service.d/autologin.conf
     sudo: yes
   - name: Set .bash_profile form gui
-    template: src=bash_profile dest=/home/gui/.bash_profile mode=0700 owner=dsc group=dsc
+    template: src=bash_profile dest=/home/gui/.bash_profile mode=0700 owner=gui group=gui
     sudo: yes
   - name: Set .xinitrc from gui
-    template: src=xinitrc dest=/home/gui/.xinitrc mode=0700 owner=dsc group=dsc
+    template: src=xinitrc dest=/home/gui/.xinitrc mode=0700 owner=gui group=gui
     sudo: yes

@@ -1,18 +1,15 @@
 ---
 - hosts: dsc
   remote_user: diana
+
   tasks:
-
-  - name: Install git
-    apt: pkg=git state=latest
+  - name: Install git, npm and nodejs
+    apt: name={{item}} state=latest
+    with_items:
+    - git
+    - nodejs
+    - npm
     sudo: yes
-  - name: Install npm
-    apt: pkg=npm state=latest
-    sudo: yes
-  - name: Install nodejs
-    apt: pkg=nodejs state=latest
-    sudo: yes
-
   - name: Pull dsc repo
     git: repo=https://github.com/DigitalShooting/DSC.git dest=/home/diana/dsc/
   - name: NPM Install in dsc

@@ -10,6 +10,8 @@
     - nodejs
     - npm
     sudo: yes
+  - name: Add User to dialout group
+    user: name=user state=present groups="dialout"
   - name: Pull dsc repo
     git: repo=https://github.com/DigitalShooting/DSC.git dest=/home/diana/dsc/
   - name: NPM Install in dsc

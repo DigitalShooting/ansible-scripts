@@ -6,7 +6,7 @@
 
   tasks:
   - name: Install dwm, suckless-tools, xinit and surf
-    apt: name={{item} state=latest
+    apt: name={{item}} state=latest
     with_items:
     - dwm
     - suckless-tools

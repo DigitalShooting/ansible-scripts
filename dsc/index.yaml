@@ -11,7 +11,7 @@
     - npm
     sudo: yes
   - name: Add User to dialout group
-    user: name=user state=present groups="dialout"
+    user: name=diana state=present groups="dialout"
     sudo: yes
   - name: Pull dsc repo
     git: repo=https://github.com/DigitalShooting/DSC.git dest=/home/diana/dsc/

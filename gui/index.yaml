@@ -12,6 +12,17 @@
     - suckless-tools
     - xinit
     - surf
+    - build-essential
+    - libx11-dev
+    - libxinerama-dev
+    - sharutils
+    sudo: yes
+
+  - name: Pull dwm repo
+    git: repo=http://DSM/DigitalShooting/dwm.git dest=/tmp/dwm/
+    sudo: yes
+  - name: Make dwm
+    command: bash -c "cd /tmp/dwm/ && make && make install"
     sudo: yes
 
   - name: Add user gui

@@ -2,6 +2,6 @@
 - hosts: dsc
   remote_user: diana
 
+- include: main/index.yaml
 - include: gui/index.yaml
 - include: dsc/index.yaml
-- include: main/index.yaml

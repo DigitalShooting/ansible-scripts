@@ -14,14 +14,10 @@
     user: name=diana state=present groups="dialout"
     sudo: yes
 
-  - name: RM old
-    command: bash -c "rm -rf /home/diana/dsc/"
   - name: Pull dsc repo
     git: repo=http://DSM/DigitalShooting/DSC.git dest=/home/diana/dsc/
   - name: NPM Install in dsc
     npm: path=/home/diana/dsc/
-  - name: Build DSC libs
-    command: bash -c "/home/diana/dsc/buildAPI.sh"
 
   - name: Set up dsc systemd service
     template: src=dsc.service dest=/etc/systemd/system/dsc.service owner=root group=root

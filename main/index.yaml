@@ -7,6 +7,9 @@
     template: src=interfaces dest=/etc/network/interfaces owner=root group=root
     sudo: yes
 
+  - name: Restart networking
+    command: bash -c "ifdown eth0 && ifup eth0"
+
   - name: Install htop, tmux
     apt: name={{item}} state=latest
     with_items:

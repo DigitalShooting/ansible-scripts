@@ -14,5 +14,7 @@ iface eth0 inet static
     netmask 255.255.0.0
     gateway 10.0.0.1
 
+iface eth0 inet dhcp
+
 # This is an autoconfigured IPv6 interface
 iface eth0 inet6 auto

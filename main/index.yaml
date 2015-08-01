@@ -10,6 +10,10 @@
     - tmux
     sudo: yes
 
+  - name: Set up networking
+    template: src=interfaces dest=/etc/network/interfaces owner=root group=root
+    sudo: yes
+
   - name: Set up hosts
     template: src=hosts dest=/etc/hosts owner=root group=root
     sudo: yes

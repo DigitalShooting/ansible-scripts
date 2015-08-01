@@ -3,15 +3,15 @@
   remote_user: diana
 
   tasks:
+  - name: Set up networking
+    template: src=interfaces dest=/etc/network/interfaces owner=root group=root
+    sudo: yes
+
   - name: Install htop, tmux
     apt: name={{item}} state=latest
     with_items:
     - htop
     - tmux
-    sudo: yes
-
-  - name: Set up networking
-    template: src=interfaces dest=/etc/network/interfaces owner=root group=root
     sudo: yes
 
   - name: Set up hosts

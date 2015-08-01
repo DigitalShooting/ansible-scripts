@@ -4,7 +4,7 @@
 
   tasks:
   - name: Set up all
-    include: {{filePath}}
+    include: {{ filePath }}
     with_items:
     - ./gui/index.yaml
     - ./dsc/index.yaml

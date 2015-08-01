@@ -3,9 +3,11 @@
   remote_user: diana
 
   tasks:
-  - name: Set up all
-    include: {{ filePath }}
-    with_items:
-    - ./gui/index.yaml
-    - ./dsc/index.yaml
-    - ./main/index.yaml
+  - name: Run GUI
+    include: gui/index.yaml
+
+  - name: Run DSC
+    include: dsc/index.yaml
+
+  - name: Run Main
+    include: main/index.yaml

@@ -14,7 +14,7 @@
     user: name=diana state=present groups="dialout"
     sudo: yes
   - name: Pull dsc repo
-    git: repo=https://github.com/DigitalShooting/DSC.git dest=/home/diana/dsc/
+    git: repo=http://DSM/DigitalShooting/DSC.git dest=/home/diana/dsc/
   - name: NPM Install in dsc
     npm: path=/home/diana/dsc/
 

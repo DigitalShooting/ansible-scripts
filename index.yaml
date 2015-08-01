@@ -1,0 +1,11 @@
+---
+- hosts: dsc
+  remote_user: diana
+
+  tasks:
+  - name: Set up all
+    include: {{filePath}}
+    with_items:
+    - ./gui/index.yaml
+    - ./dsc/index.yaml
+    - ./main/index.yaml

@@ -1,0 +1,15 @@
+---
+- hosts: dsc
+  remote_user: diana
+
+  tasks:
+  - name: Install htop, tmux
+    apt: name={{item}} state=latest
+    with_items:
+    - htop
+    - tmux
+    sudo: yes
+
+  - name: Set up hosts
+    template: src=hosts dest=/etc/hosts owner=root group=root
+    sudo: yes

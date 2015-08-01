@@ -1,3 +1,7 @@
 surf 127.0.0.1:3000 &
 
+# Disable display shutdown
+xset s off
+xset -dpms
+
 exec dwm

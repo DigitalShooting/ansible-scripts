@@ -3,11 +3,6 @@
   remote_user: diana
 
   tasks:
-  - name: Run GUI
-    include: gui/index.yaml
-
-  - name: Run DSC
-    include: dsc/index.yaml
-
-  - name: Run Main
-    include: main/index.yaml
+  - include: gui/index.yaml
+  - include: dsc/index.yaml
+  - include: main/index.yaml

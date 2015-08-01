@@ -16,6 +16,7 @@
     - libx11-dev
     - libxinerama-dev
     - sharutils
+    - unclutter
     sudo: yes
 
   - name: Pull dwm repo

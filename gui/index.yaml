@@ -22,7 +22,7 @@
     git: repo=http://DSM/DigitalShooting/dwm.git dest=/tmp/dwm/
     sudo: yes
   - name: Make dwm
-    command: bash -c "cd /tmp/dwm/ && make && make install"
+    command: bash -c "cd /tmp/dwm/ && make clean && make && make install"
     sudo: yes
 
   - name: Add user gui

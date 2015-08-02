@@ -10,7 +10,7 @@
 
   tasks:
   - name: Install git and zsh
-    apt: name=$item state=latest update_cache=yes
+    apt: name={{item}} state=latest update_cache=yes
     with_items:
      - git
      - zsh

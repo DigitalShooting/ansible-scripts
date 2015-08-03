@@ -7,7 +7,7 @@
     template: src=interfaces dest=/etc/network/interfaces owner=root group=root
     sudo: yes
   - name: Set up DNS
-    template: src=resolv.conf dest=/etc/resolv.conf owner=root group=root
+    template: src=resolv.conf dest=/etc/resolv owner=root group=root
     sudo: yes
 
   - name: Restart networking

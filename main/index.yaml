@@ -6,6 +6,9 @@
   - name: Set up networking
     template: src=interfaces dest=/etc/network/interfaces owner=root group=root
     sudo: yes
+  - name: Set up dns
+    template: src=resolv.conf dest=/etc/resolv.conf owner=root group=root
+    sudo: yes
 
   - name: Restart networking
     command: bash -c "ifdown eth0 && ifup eth0"

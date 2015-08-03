@@ -5,7 +5,3 @@
 - include: main/index.yaml
 - include: gui/index.yaml
 - include: dsc/index.yaml
-
-- include: ./zsh/index.yaml user=diana
-- include: ./zsh/index.yaml user=root
-- include: ./zsh/index.yaml user=gui

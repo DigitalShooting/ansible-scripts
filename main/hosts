@@ -1,19 +1,19 @@
 127.0.0.1	localhost
 
-10.0.0.1	DSM
+#10.0.0.1	DSM
 
-10.0.1.1	DSC1
-10.0.1.2	DSC2
-10.0.1.3	DSC3
-10.0.1.4	DSC4
-10.0.1.5	DSC5
-10.0.1.6	DSC6
-10.0.1.7	DSC7
-10.0.1.8	DSC8
-10.0.1.9	DSC9
-10.0.1.10	DSC10
-10.0.1.11	DSC11
-10.0.1.12	DSC12
+#10.0.1.1	DSC1
+#10.0.1.2	DSC2
+#10.0.1.3	DSC3
+#10.0.1.4	DSC4
+#10.0.1.5	DSC5
+#10.0.1.6	DSC6
+#10.0.1.7	DSC7
+#10.0.1.8	DSC8
+#10.0.1.9	DSC9
+#10.0.1.10	DSC10
+#10.0.1.11	DSC11
+#10.0.1.12	DSC12
 
 # The following lines are desirable for IPv6 capable hosts
 ::1     localhost ip6-localhost ip6-loopback

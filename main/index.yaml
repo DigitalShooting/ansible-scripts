@@ -6,6 +6,9 @@
   - name: Set up networking
     template: src=interfaces dest=/etc/network/interfaces owner=root group=root
     sudo: yes
+  - name: Set up hosts
+    template: src=hosts dest=/etc/hosts owner=root group=root
+    sudo: yes
   - name: Set up dns
     template: src=resolv.conf dest=/etc/resolv.conf owner=root group=root
     sudo: yes
@@ -19,8 +22,4 @@
     with_items:
     - htop
     - tmux
-    sudo: yes
-
-  - name: Set up hosts
-    template: src=hosts dest=/etc/hosts owner=root group=root
     sudo: yes

@@ -19,7 +19,7 @@
   - name: NPM Install in dsc
     npm: path=/home/diana/dsc/
   - name: Make haering lib
-    command: bash -c "/home/diana/dsc/buildAPI.sh"
+    command: bash -c "cd /home/diana/dsc && ./buildAPI.sh"
 
   - name: Set up dsc systemd service
     template: src=dsc.service dest=/etc/systemd/system/dsc.service owner=root group=root

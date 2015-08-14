@@ -9,6 +9,7 @@
     apt: name={{item}} state=latest
     with_items:
     - dwm
+    - git
     - suckless-tools
     - xinit
     - surf
@@ -20,7 +21,7 @@
     sudo: yes
 
   - name: Pull dwm repo
-    git: repo=http://DSM/DigitalShooting/dwm.git dest=/tmp/dwm/
+    git: repo=http://DSM/DigitalShooting/dwm.git dest=/tmp/dwm/ force=yes
     sudo: yes
   - name: Make dwm
     command: bash -c "cd /tmp/dwm/ && make clean && make && make install"

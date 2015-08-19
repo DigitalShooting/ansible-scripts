@@ -21,8 +21,10 @@
   - name: Make haering lib
     command: bash -c "cd /home/diana/dsc && ./buildAPI.sh"
 
-  - name: Set up dsc config
+  - name: Set up dsc stand config
     template: src=stand.js dest=/home/diana/dsc/config/stand.js
+  - name: Set up dsc interface config
+    template: src=interface.js dest=/home/diana/dsc/config/interface.js
 
   - name: Set up dsc systemd service
     template: src=dsc.service dest=/etc/systemd/system/dsc.service owner=root group=root

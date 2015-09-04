@@ -1,0 +1,24 @@
+---
+- hosts: dsv
+  remote_user: diana
+
+  tasks:
+  - name: Install git, npm and nodejs
+    apt: name={{item}} state=latest
+    with_items:
+    - git
+    - nodejs
+    - npm
+    sudo: yes
+
+  - name: Pull dsv repo
+    git: repo=https://github.com/DigitalShooting/dsv.git dest=/home/diana/dsv/ force=yes
+  - name: NPM Install in dsv
+    npm: path=/home/diana/dsv/
+
+  - name: Set up dsv systemd service
+    template: src=dsv.service dest=/etc/systemd/system/dsv.service owner=root group=root
+    sudo: yes
+  - name: Restart dsv systemd service
+    service: name=dsv state=restarted enabled=yes
+    sudo: yes

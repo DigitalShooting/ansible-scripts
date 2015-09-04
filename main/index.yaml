@@ -1,5 +1,5 @@
 ---
-- hosts: dsc, dsv
+- hosts: all
   remote_user: diana
 
   tasks:

@@ -13,6 +13,9 @@
   - name: Set ntp config
     template: src=ntp.conf dest=/etc/ntp.conf
     sudo: yes
+  - name: Restart ntp systemd service
+    service: name=ntp state=restarted enabled=yes
+    sudo: yes
   - name: Sync Time
     command: bash -c "ntpd -q -g"
     sudo: yes

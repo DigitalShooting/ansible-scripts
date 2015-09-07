@@ -16,4 +16,4 @@ Ansible scripts to set up DSC nodes.
 
 ## Licence
 
-GNU GENERAL PUBLIC LICENSE Version 2
+GNU GENERAL PUBLIC LICENSE Version 3

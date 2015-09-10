@@ -1,6 +1,6 @@
 sleep 5
 
-surf 127.0.0.1:3000 &
+surf {{ip}}:3000/?key=jvKLefsjw &
 
 unclutter &
 

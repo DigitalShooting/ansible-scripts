@@ -12,7 +12,7 @@
     sudo: yes
 
   - name: Pull dsv repo
-    git: repo=https://github.com/DigitalShooting/dsv.git dest=/home/diana/dsv/ force=yes
+    git: repo=http://DSM/DigitalShooting/dsv.git dest=/home/diana/dsv/ force=yes
   - name: NPM Install in dsv
     npm: path=/home/diana/dsv/
 

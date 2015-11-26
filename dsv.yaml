@@ -3,10 +3,10 @@
   remote_user: diana
 
   tasks:
-  - set_fact: type="dsv"
+  - set_fact: type=dsv
 
-# - include: install/networking/index.yaml
-# - include: install/tools/index.yaml
-# - include: install/gui/index.yaml
+- include: install/networking/index.yaml
+- include: install/tools/index.yaml
+- include: install/gui/index.yaml
 - include: install/dsv/index.yaml
 - include: install/dsc-gateway/index.yaml

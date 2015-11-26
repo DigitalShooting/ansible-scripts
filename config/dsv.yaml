@@ -5,7 +5,7 @@ dsv_port: 3001
 
 dsc_gateway_repo: https://github.com/DigitalShooting/DSC-Gateway.git
 dsc_gateway_version: master
-dsc_gateway_port: 4002
+dsc_gateway_port: 4000
 
 gui_dwm_repo: https://github.com/DigitalShooting/dwm.git
 gui_url: 127.0.0.1:{{dsv_port}}

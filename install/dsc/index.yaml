@@ -5,12 +5,14 @@
     - ../../config/{{type}}.yaml
 
   tasks:
-  - name: Install git, npm and nodejs
+  - name: Install git, npm, nodejs, mysql
     apt: name={{item}} state=latest
     with_items:
     - git
     - nodejs
     - npm
+    - mysql-server
+    - python-mysqldb
     sudo: yes
 
   - name: Adding user dsc
@@ -41,6 +43,21 @@
     template: src=config/auth.js dest=/home/dsc/dsc/config/auth.js
     become: yes
     become_user: dsc
+
+
+
+  - name: copy .my.cnf file with empty root password credentials
+    template: src=mysql/my.cnf.empty dest=/root/.my.cnf owner=root group=root mode=0600
+    sudo: yes
+
+  - name: Start the MySQL service
+    service: name=mysql state=started enabled=true
+    sudo: yes
+
+  - mysql_db: name=mysql state=import target=/home/dsc/dsc/install/database.sql
+    sudo: yes
+
+
 
   - name: Set up dsc systemd service
     template: src=other/dsc.service dest=/etc/systemd/system/dsc.service owner=root group=root

@@ -1,12 +1,14 @@
 ---
 dsc_repo: https://github.com/DigitalShooting/DSC.git
-dsc_version: v1.3
+dsc_version: master
 dsc_key: jvKLefsjw
 dsc_verein: SV Diana Dettingen
 dsc_port: 3000
 
 gui_dwm_repo: https://github.com/DigitalShooting/dwm.git
 gui_url: 127.0.0.1:{{dsc_port}}/?key={{dsc_key}}
+
+mysql_rootPassword: "lorem"
 
 networking_gateway: 10.13.0.1
 networking_netmask: 255.255.255.0

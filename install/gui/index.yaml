@@ -1,0 +1,46 @@
+---
+- hosts: all
+  remote_user: diana
+  vars:
+    dsc_port: 3000
+    dsc_key: jvKLefsjw
+	dwm_repo: https://github.com/DigitalShooting/dwm.git
+
+  tasks:
+  - name: Installing dwm, suckless-tools, xinit, surf, etc
+    apt: name={{item}} state=latest
+    with_items:
+    - dwm
+    - git
+    - suckless-tools
+    - xinit
+    - surf
+    - build-essential
+    - libx11-dev
+    - libxinerama-dev
+    - sharutils
+    - unclutter
+    sudo: yes
+
+  - name: Pulling dwm repo
+    git: repo={{dwm_repo}} dest=/tmp/dwm/ force=yes
+    sudo: yes
+  - name: Make dwm
+    command: bash -c "cd /tmp/dwm/ && make clean && make && make install"
+    sudo: yes
+
+  - name: Adding user gui
+    user: name=gui shell=/bin/bash
+    sudo: yes
+  - name: Seting up Autologin for gui on tty1 (1)
+    file: path=/etc/systemd/system/getty@tty1.service.d state=directory mode=0755
+    sudo: yes
+  - name: Seting up Autologin for gui on tty1 (2)
+    template: src=other/autologin.conf dest=/etc/systemd/system/getty@tty1.service.d/autologin.conf
+    sudo: yes
+  - name: Seting .xinitrc from gui
+    template: src=gui/xinitrc dest=/home/gui/.xinitrc mode=0700 owner=gui group=gui
+    sudo: yes
+  - name: Seting bash_profile from gui
+    template: src=gui/bash_profile dest=/home/gui/.bash_profile mode=0700 owner=gui group=gui
+    sudo: yes

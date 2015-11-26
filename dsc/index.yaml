@@ -1,6 +1,11 @@
 ---
 - hosts: dsc
   remote_user: diana
+  vars:
+    dsc_repo: https://github.com/DigitalShooting/DSC.git
+    dsc_version: v1.3
+    dsc_key: jvKLefsjw
+    dsc_verein: SV Diana Dettingen
 
   tasks:
   - name: Install git, npm and nodejs
@@ -10,24 +15,41 @@
     - nodejs
     - npm
     sudo: yes
-  - name: Add User to dialout group
-    user: name=diana state=present groups="dialout"
+
+  - name: Adding user dsc
+    user: name=dsc shell=/bin/bash
+    sudo: yes
+  - name: Adding user dsc to dialout group...
+    user: name=dsc state=present groups="dialout"
     sudo: yes
 
-  - name: Pull dsc repo
-    git: repo=http://DSM/DigitalShooting/DSC.git dest=/home/diana/dsc/ force=yes
+  - name: Pulling dsc repo
+    git: repo={{dsc_repo}} dest=/home/dsc/dsc/ force=yes version={{dsc_version}}
+    become: yes
+    become_user: dsc
   - name: NPM Install in dsc
-    npm: path=/home/diana/dsc/
+    npm: path=/home/dsc/dsc/
+    become: yes
+    become_user: dsc
   - name: Make haering lib
-    command: bash -c "cd /home/diana/dsc && ./buildAPI.sh"
+    command: bash -c "cd /home/dsc/dsc/lib/Haering/ && ./buildAPI.sh"
+    become: yes
+    become_user: dsc
 
   - name: Set up dsc stand config
-    template: src=line.js dest=/home/diana/dsc/config/line.js
+    template: src=config/line.js dest=/home/dsc/dsc/config/line.js
+    become: yes
+    become_user: dsc
   - name: Set up dsc auth config
-    template: src=auth.js dest=/home/diana/dsc/config/auth.js
+    template: src=config/auth.js dest=/home/dsc/dsc/config/auth.js
+    become: yes
+    become_user: dsc
 
   - name: Set up dsc systemd service
-    template: src=dsc.service dest=/etc/systemd/system/dsc.service owner=root group=root
+    template: src=other/dsc.service dest=/etc/systemd/system/dsc.service owner=root group=root
+    sudo: yes
+  - name: Reload systemd
+    command: systemctl daemon-reload
     sudo: yes
   - name: Restart dsc systemd service
     service: name=dsc state=restarted enabled=yes

@@ -1,0 +1,30 @@
+---
+- hosts: all
+  remote_user: diana
+  vars:
+    ntp_server: 10.0.0.10
+
+  tasks:
+  - name: Installing htop, tmux, ntp
+    apt: name={{item}} state=latest
+    with_items:
+    - htop
+    - tmux
+    - ntp
+    sudo: yes
+
+  - name: Seting up ntp config
+    template: src=etc/ntp.conf dest=/etc/ntp.conf
+    sudo: yes
+  - name: Stoping ntp systemd service
+    service: name=ntp state=stopped enabled=yes
+    sudo: yes
+  - name: Syncing time
+    command: bash -c "ntpd -g"
+    sudo: yes
+  - name: Write time to hardware
+    command: bash -c "hwclock --systohc"
+    sudo: yes
+  - name: Starting ntp systemd service
+    service: name=ntp state=started enabled=yes
+    sudo: yes

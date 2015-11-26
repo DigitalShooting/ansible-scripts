@@ -1,0 +1,14 @@
+source /etc/network/interfaces.d/*
+
+auto lo
+iface lo inet loopback
+
+
+auto eth0
+iface eth0 inet static
+	address {{ip}}
+	netmask {{networking_netmask}}
+	gateway {{networking_gateway}}
+	dns-nameservers {{networking_nameservers}}
+
+iface eth0 inet6 auto

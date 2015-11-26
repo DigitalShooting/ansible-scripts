@@ -1,11 +1,8 @@
 ---
 - hosts: dsc
   remote_user: diana
-  vars:
-    dsc_repo: https://github.com/DigitalShooting/DSC.git
-    dsc_version: v1.3
-    dsc_key: jvKLefsjw
-    dsc_verein: SV Diana Dettingen
+  vars_files:
+    - ../../config/{{type}}.yaml
 
   tasks:
   - name: Install git, npm and nodejs

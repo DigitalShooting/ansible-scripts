@@ -1,10 +1,8 @@
 ---
 - hosts: all
   remote_user: diana
-  vars:
-    networking_gateway: 10.13.0.1
-    networking_netmask: 255.255.255.0
-    networking_nameservers: 10.13.0.1
+  vars_files:
+    - ../../config/{{type}}.yaml
 
   tasks:
   - name: Seting network config

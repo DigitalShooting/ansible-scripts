@@ -2,11 +2,11 @@
 ExecStart=/usr/bin/nodejs index.js
 Restart=always
 StandardOutput=syslog
-SyslogIdentifier=dsv
-User=diana
-Group=diana
+SyslogIdentifier=dsc
+User=dsc
+Group=dsc
 #Environment=NODE_ENV=production
-WorkingDirectory=/home/dsv/dsv/
+WorkingDirectory=/home/dsc/dsc/
 
 [Install]
 WantedBy=multi-user.target

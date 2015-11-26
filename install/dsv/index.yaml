@@ -1,9 +1,8 @@
 ---
 - hosts: dsv
   remote_user: diana
-  vars:
-    dsv_repo: https://github.com/DigitalShooting/DSV.git
-    dsv_version: v1.1
+  vars_files:
+    - ../../config/{{type}}.yaml
 
   tasks:
   - name: Installing git, npm and nodejs
@@ -27,8 +26,18 @@
     become: yes
     become_user: dsv
 
+  - name: Setting dscGateway Settings
+    template: src=config/dscGateway.js dest=/home/dsv/dsv/config/dscGateway.js owner=dsv group=dsv
+    sudo: yes
+  - name: Setting network Settings
+    template: src=config/network.js dest=/home/dsv/dsv/config/network.js owner=dsv group=dsv
+    sudo: yes
+
   - name: Seting up dsv systemd service
     template: src=other/dsv.service dest=/etc/systemd/system/dsv.service owner=root group=root
+    sudo: yes
+  - name: Reload systemd
+    command: systemctl daemon-reload
     sudo: yes
   - name: Restarting dsv systemd service
     service: name=dsv state=restarted enabled=yes

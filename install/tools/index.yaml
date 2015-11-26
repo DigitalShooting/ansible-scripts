@@ -1,8 +1,8 @@
 ---
 - hosts: all
   remote_user: diana
-  vars:
-    ntp_server: 10.0.0.10
+  vars_files:
+    - ../../config/{{type}}.yaml
 
   tasks:
   - name: Installing htop, tmux, ntp

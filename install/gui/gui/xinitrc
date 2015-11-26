@@ -1,6 +1,6 @@
-sleep 5
+sleep 7
 
-surf 127.0.0.1:{{dsc_port}}/?key={{dsc_key}} &
+surf {{gui_url}} &
 
 unclutter &
 

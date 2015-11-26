@@ -1,10 +1,8 @@
 ---
 - hosts: all
   remote_user: diana
-  vars:
-    dsc_port: 3000
-    dsc_key: jvKLefsjw
-	dwm_repo: https://github.com/DigitalShooting/dwm.git
+  vars_files:
+    - ../../config/{{type}}.yaml
 
   tasks:
   - name: Installing dwm, suckless-tools, xinit, surf, etc
@@ -23,7 +21,7 @@
     sudo: yes
 
   - name: Pulling dwm repo
-    git: repo={{dwm_repo}} dest=/tmp/dwm/ force=yes
+    git: repo={{gui_dwm_repo}} dest=/tmp/dwm/ force=yes
     sudo: yes
   - name: Make dwm
     command: bash -c "cd /tmp/dwm/ && make clean && make && make install"

@@ -1,0 +1,11 @@
+---
+- hosts: dsc
+  remote_user: diana
+
+  tasks:
+  - set_fact: type="dsc"
+  
+- include: install/networking/index.yaml
+- include: install/tools/index.yaml
+- include: install/gui/index.yaml
+- include: install/dsc/index.yaml

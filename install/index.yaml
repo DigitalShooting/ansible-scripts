@@ -1,7 +1,0 @@
----
-- hosts: all
-  remote_user: diana
-
-- include: networking/index.yaml
-- include: gui/index.yaml
-- include: tools/index.yaml

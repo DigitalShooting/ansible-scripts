@@ -1,17 +1,14 @@
 # ansible-scripts
 
-Ansible scripts to set up DSC nodes.
+Ansible scripts to set up DS* nodes.
 
 ## Scripts
 
-### dsc
-- clone dsc
-- set up systemd service
+- dsc
+- dsv
 
-### gui
-- Set up autologin for user `dsc`
-- Set up autostart dwm
-- Open surf browser
+- dsm (TODO)
+- dsc-storage (TODO)
 
 
 ## Licence

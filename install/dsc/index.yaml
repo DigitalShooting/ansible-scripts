@@ -45,18 +45,17 @@
     become_user: dsc
 
 
-
-  - name: copy .my.cnf file with empty root password credentials
-    template: src=mysql/my.cnf.empty dest=/root/.my.cnf owner=root group=root mode=0600
+  - name: Configure mysql root
+    command: mysqladmin -u root password "{{mysql_rootPassword}}"
+    ignore_errors: yes
+  - name: copy .my.cnf file with root password credentials
+    template: src=mysql/my.cnf dest=/root/.my.cnf owner=root group=root mode=0600
     sudo: yes
-
   - name: Start the MySQL service
     service: name=mysql state=started enabled=true
     sudo: yes
-
   - mysql_db: name=mysql state=import target=/home/dsc/dsc/install/database.sql
     sudo: yes
-
 
 
   - name: Set up dsc systemd service

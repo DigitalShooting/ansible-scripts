@@ -1,20 +1,19 @@
 ---
-base_repo_url: https://github.com/DigitalShooting/
-
-dsc_repo: {{base_repo_url}}DSC.git
+dsc_repo: https://github.com/DigitalShooting/DSC.git
 dsc_version: master
 dsc_key: jvKLefsjw
 dsc_verein: SV Diana Dettingen
 dsc_port: 3000
 
-gui_dwm_repo: {{base_repo_url}}dwm.git
+gui_dwm_repo: https://github.com/DigitalShooting/dwm.git
 gui_url: 127.0.0.1:{{dsc_port}}/?key={{dsc_key}}
 
 # Change bevore first run!
-mysql_rootPassword: "lorem"
+mysql_root_password: "lorem"
+mysql_dsc_password: "test2"
 
-networking_gateway: 10.13.0.1
+networking_gateway: 10.1.0.1
 networking_netmask: 255.255.255.0
-networking_nameservers: 10.13.0.1
+networking_nameservers: 10.1.0.1
 
 tools_ntp_server: 10.0.0.10

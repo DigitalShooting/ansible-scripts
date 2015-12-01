@@ -1,15 +1,13 @@
 ---
-base_repo_url: https://github.com/DigitalShooting/
-
-dsv_repo: {{base_repo_url}}DSV.git
+dsv_repo: https://github.com/DigitalShooting/DSV.git
 dsv_version: v1.1
 dsv_port: 3001
 
-dsc_gateway_repo: {{base_repo_url}}DSC-Gateway.git
+dsc_gateway_repo: https://github.com/DigitalShooting/DSC-Gateway.git
 dsc_gateway_version: master
 dsc_gateway_port: 4000
 
-gui_dwm_repo: {{base_repo_url}}dwm.git
+gui_dwm_repo: https://github.com/DigitalShooting/dwm.git
 gui_url: 127.0.0.1:{{dsv_port}}
 
 networking_gateway: 10.13.0.1

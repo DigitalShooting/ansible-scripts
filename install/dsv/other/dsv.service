@@ -5,9 +5,7 @@ StandardOutput=syslog
 SyslogIdentifier=dsv
 User=dsv
 Group=dsv
-#Environment=NODE_ENV=production
 WorkingDirectory=/home/dsv/dsv/
 
 [Install]
 WantedBy=multi-user.target
-Alias=dsc.service

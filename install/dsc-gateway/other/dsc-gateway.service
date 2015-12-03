@@ -5,9 +5,7 @@ StandardOutput=syslog
 SyslogIdentifier=dsc-gateway
 User=dsc-gateway
 Group=dsc-gateway
-#Environment=NODE_ENV=production
 WorkingDirectory=/home/dsc-gateway/dsc-gateway/
 
 [Install]
 WantedBy=multi-user.target
-Alias=dsc.service

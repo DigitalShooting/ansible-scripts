@@ -50,8 +50,13 @@
 
 
   - name: Configure mysql root
-    command: mysqladmin -u root password "{{mysql_root_password}}"
-    ignore_errors: yes
+    mysql_user: name=root host={{ item }} password={{ mysql_root_password }} priv=*.*:ALL,GRANT
+    with_items:
+    - "{{ ansible_hostname }}"
+    - 127.0.0.1
+    - ::1
+    - localhost
+    sudo: yes
   - name: copy .my.cnf file with root password credentials
     template: src=mysql/my.cnf dest=/root/.my.cnf owner=root group=root mode=0600
     sudo: yes
@@ -78,6 +83,6 @@
   - name: Reload systemd
     command: systemctl daemon-reload
     sudo: yes
-  - name: Restart dsc systemd service
+  - name: Restart & enable dsc systemd service
     service: name=dsc state=restarted enabled=yes
     sudo: yes

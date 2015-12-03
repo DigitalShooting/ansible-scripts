@@ -1,3 +1,7 @@
+[Unit]
+BindsTo=mysql.service
+After=mysql.service
+
 [Service]
 ExecStart=/usr/bin/nodejs index.js
 Restart=always
@@ -5,9 +9,7 @@ StandardOutput=syslog
 SyslogIdentifier=dsc
 User=dsc
 Group=dsc
-#Environment=NODE_ENV=production
 WorkingDirectory=/home/dsc/dsc/
 
 [Install]
 WantedBy=multi-user.target
-Alias=dsc.service

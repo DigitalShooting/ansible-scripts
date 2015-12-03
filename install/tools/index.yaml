@@ -13,6 +13,7 @@
     - ntp
     sudo: yes
 
+
   - name: Seting up ntp config
     template: src=etc/ntp.conf dest=/etc/ntp.conf
     sudo: yes
@@ -27,4 +28,12 @@
     sudo: yes
   - name: Starting ntp systemd service
     service: name=ntp state=started enabled=yes
+    sudo: yes
+
+
+  - name: Seting up GRUB config
+    template: src=etc/grub dest=/etc/default/grub
+    sudo: yes
+  - name: Update GRUB
+    command: update-grub
     sudo: yes

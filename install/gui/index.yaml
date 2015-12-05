@@ -40,9 +40,9 @@
     template: src=other/autologin.conf dest=/etc/systemd/system/getty@tty1.service.d/autologin.conf
     sudo: yes
   - name: Seting .xinitrc and .bash_profile for gui
-    template: src=gui/{{item}} dest=/home/gui/{{item}} mode=0700
+    template: src=gui/{{item}} dest=/home/gui/.{{item}} mode=0700
     become: yes
     become_user: gui
     with_items:
-    - ".xinitrc"
-    - ".bash_profile"
+    - "xinitrc"
+    - "bash_profile"

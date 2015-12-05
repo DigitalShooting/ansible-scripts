@@ -38,9 +38,10 @@
   - name: Seting up Autologin for gui on tty1 (2)
     template: src=other/autologin.conf dest=/etc/systemd/system/getty@tty1.service.d/autologin.conf
     sudo: yes
-  - name: Seting .xinitrc from gui
-    template: src=gui/xinitrc dest=/home/gui/.xinitrc mode=0700 owner=gui group=gui
-    sudo: yes
-  - name: Seting bash_profile from gui
-    template: src=gui/bash_profile dest=/home/gui/.bash_profile mode=0700 owner=gui group=gui
-    sudo: yes
+  - name: Seting .xinitrc and .bash_profile for gui
+    template: src=gui/xinitrc dest=/home/gui/{{item}} mode=0700
+    become: yes
+    become_user: gui
+    with_items:
+    - ".xinitrc"
+    - ".bash_profile"

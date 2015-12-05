@@ -59,7 +59,7 @@ mysql_dsc_password: "test2"
 ##### Network #####
 
 # ipv4 address (overwrite in ansible host file)
-networking_ip: "10.1.0.200"
+#networking_ip: "0.0.0.0"
 
 # ipv4 gateway, netmask and dns
 networking_gateway: "10.1.0.1"

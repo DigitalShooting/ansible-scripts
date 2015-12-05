@@ -12,6 +12,7 @@
     - htop
     - tmux
     - ntp
+    - openssl
     sudo: yes
 
     # configure ntp

@@ -1,21 +1,70 @@
 ---
-remote_user: diana
 
-dsc_repo: https://github.com/DigitalShooting/DSC.git
-dsc_version: master
-dsc_key: jvKLefsjw
-dsc_verein: SV Diana Dettingen
-dsc_port: 3000
+##### Main #####
 
-gui_dwm_repo: https://github.com/DigitalShooting/dwm.git
-gui_url: 127.0.0.1:{{dsc_port}}/?key={{dsc_key}}
+# remote user to connect with (sudo without password required)
+remote_user: "diana"
 
-# Change before first run!
+# base url for all git repos
+remote_git_url: "https://github.com/DigitalShooting/"
+
+
+
+
+##### DSC #####
+
+# main dsc repo url
+dsc_repo: "{{remote_git_url}}DSC.git"
+
+# git tag or branch to use
+dsc_version: "master"
+
+# static auth key
+dsc_key: "jvKLefsjw"
+
+# verein label (Print)
+dsc_verein: "SV Diana Dettingen"
+
+# stand number (overwrite in ansible host file)
+dsc_stand: 0
+
+# port for dsc server
+dsc_port: "3000"
+
+
+
+
+##### GUI #####
+
+# dwm repo url
+gui_dwm_repo: "{{remote_git_url}}dwm.git"
+
+# url to start surf webbrowser
+gui_url: "127.0.0.1:{{dsc_port}}/?key={{dsc_key}}"
+
+
+
+
+##### MySQL #####
+
+# mysql root password (change before first run)
 mysql_root_password: "lorem"
+
+# mysql dsc user password (wildcard login allowed)
 mysql_dsc_password: "test2"
 
-networking_gateway: 10.1.0.1
-networking_netmask: 255.255.255.0
-networking_nameservers: 10.1.0.1
 
-tools_ntp_server: 10.0.0.10
+
+
+##### Network #####
+
+# ipv4 address (overwrite in ansible host file)
+networking_ip: 10.1.0.200
+
+# ipv4 gateway, netmask and dns
+networking_gateway: "10.1.0.1"
+networking_netmask: "255.255.255.0"
+networking_nameservers: "10.1.0.1"
+
+# ntp server
+tools_ntp_server: "10.0.0.10"

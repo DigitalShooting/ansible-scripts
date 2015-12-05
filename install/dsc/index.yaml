@@ -33,7 +33,7 @@
     command: bash -c "cd /home/dsc/dsc/lib/Haering/ && ./buildAPI.sh"
     become: yes
     become_user: dsc
-  - name: Set up dsc stand config
+  - name: Set up dsc config
     template: src=config/{{item}} dest=/home/dsc/dsc/config/{{item}}
     become: yes
     become_user: dsc

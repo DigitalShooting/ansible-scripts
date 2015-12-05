@@ -6,7 +6,7 @@ iface lo inet loopback
 
 auto eth0
 iface eth0 inet static
-	address {{ip}}
+	address {{networking_ip}}
 	netmask {{networking_netmask}}
 	gateway {{networking_gateway}}
 	dns-nameservers {{networking_nameservers}}

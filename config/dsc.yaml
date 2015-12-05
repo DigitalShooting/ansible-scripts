@@ -8,6 +8,9 @@ remote_user: "diana"
 # base url for all git repos
 remote_git_url: "https://github.com/DigitalShooting/"
 
+# enable to skip networing settings
+skip_networing: false
+
 
 
 

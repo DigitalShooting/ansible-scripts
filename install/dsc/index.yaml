@@ -59,6 +59,7 @@
     sudo: yes
   - mysql_db: name=mysql state=import target=/home/dsc/dsc/install/database.sql
     sudo: yes
+    ignore_errors: yes
 
     # configure mysql
   - name: copy dsc setPassword SQL file

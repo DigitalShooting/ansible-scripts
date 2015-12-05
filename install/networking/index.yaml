@@ -1,6 +1,5 @@
 ---
 - hosts: all
-  remote_user: diana
   vars_files:
     - ../../config/{{type}}.yaml
 

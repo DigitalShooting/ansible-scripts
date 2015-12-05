@@ -1,9 +1,17 @@
 ---
 - hosts: dsv
-  remote_user: diana
+  vars:
+    type: dsv
+
+  vars_files:
+  - config/{{type}}.yaml
+
+  remote_user: "{{remote_user}}"
 
   tasks:
   - set_fact: type=dsv
+  - set_fact: ansible_ssh_user="{{remote_user}}" # Ansible < 2
+  - set_fact: ansible_user="{{remote_user}}" # Anible 2.0 or higher
 
 - include: install/networking/index.yaml
 - include: install/tools/index.yaml

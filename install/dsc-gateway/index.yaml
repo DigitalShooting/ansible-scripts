@@ -1,6 +1,5 @@
 ---
 - hosts: dsv
-  remote_user: diana
   vars_files:
     - ../../config/{{type}}.yaml
 
@@ -25,9 +24,13 @@
     npm: path=/home/dsc-gateway/dsc-gateway/
     become: yes
     become_user: dsc-gateway
-  - name: Setting network Settings
-    template: src=config/network.js dest=/home/dsc-gateway/dsc-gateway/config/network.js owner=dsv group=dsv
-    sudo: yes
+  - name: Setting dsc-gateway Settings
+    template: src=config/{{item}} dest=/home/dsc-gateway/dsc-gateway/config/{{item}}
+    become: yes
+    become_user: dsc-gateway
+    with_items:
+    - network.js
+    - lines.js
 
   - name: Seting up dsc-gateway systemd service
     template: src=other/dsc-gateway.service dest=/etc/systemd/system/dsc-gateway.service owner=root group=root

@@ -1,4 +1,6 @@
 ---
+remote_user: diana
+
 dsc_repo: https://github.com/DigitalShooting/DSC.git
 dsc_version: master
 dsc_key: jvKLefsjw
@@ -8,7 +10,7 @@ dsc_port: 3000
 gui_dwm_repo: https://github.com/DigitalShooting/dwm.git
 gui_url: 127.0.0.1:{{dsc_port}}/?key={{dsc_key}}
 
-# Change bevore first run!
+# Change before first run!
 mysql_root_password: "lorem"
 mysql_dsc_password: "test2"
 

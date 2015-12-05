@@ -4,6 +4,7 @@
     - ../../config/{{type}}.yaml
 
   tasks:
+    # install deps
   - name: Installing git, npm and nodejs
     apt: name={{item}} state=latest
     with_items:
@@ -12,10 +13,12 @@
     - npm
     sudo: yes
 
+    # add dsc-gateway user
   - name: Adding user dsc-gateway
     user: name=dsc-gateway shell=/bin/bash
     sudo: yes
 
+    # install dsc-gateway
   - name: Pulling dsc-gateway repo
     git: repo={{dsc_gateway_repo}} dest=/home/dsc-gateway/dsc-gateway/ force=yes version={{dsc_gateway_version}}
     become: yes
@@ -32,6 +35,7 @@
     - network.js
     - lines.js
 
+    # crate service and start
   - name: Seting up dsc-gateway systemd service
     template: src=other/dsc-gateway.service dest=/etc/systemd/system/dsc-gateway.service owner=root group=root
     sudo: yes

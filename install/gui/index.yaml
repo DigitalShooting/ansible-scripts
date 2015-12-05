@@ -4,6 +4,7 @@
     - ../../config/{{type}}.yaml
 
   tasks:
+    # install deps
   - name: Installing dwm, suckless-tools, xinit, surf, etc
     apt: name={{item}} state=latest
     with_items:
@@ -19,6 +20,7 @@
     - unclutter
     sudo: yes
 
+    # build dwm display manager
   - name: Pulling dwm repo
     git: repo={{gui_dwm_repo}} dest=/tmp/dwm/ force=yes
     sudo: yes
@@ -26,6 +28,7 @@
     command: bash -c "cd /tmp/dwm/ && make clean && make && make install"
     sudo: yes
 
+    # add user gui and enable autlogin/ start
   - name: Adding user gui
     user: name=gui shell=/bin/bash
     sudo: yes

@@ -14,13 +14,13 @@ remote_git_url: "https://github.com/DigitalShooting/"
 ##### DSV #####
 
 # main dsv repo url
-dsv_repo: https://github.com/DigitalShooting/DSV.git
+dsv_repo: "{{remote_git_url}}DSV.git"
 
 # git tag or branch to use
-dsv_version: v1.1
+dsv_version: "v1.1"
 
 # port for dsv server
-dsv_port: 3001
+dsv_port: "3001"
 
 
 
@@ -28,21 +28,21 @@ dsv_port: 3001
 ##### DSC-Gateway #####
 
 # main dsc-gateway repo url
-dsc_gateway_repo: https://github.com/DigitalShooting/DSC-Gateway.git
+dsc_gateway_repo: "{{remote_git_url}}DSC-Gateway.git"
 
 # git tag or branch to use
-dsc_gateway_version: master
+dsc_gateway_version: "master"
 
 # port for dsc-gateway server
-dsc_gateway_port: 4000
+dsc_gateway_port: "4000"
 
 
 
 
 ##### GUI #####
 
-gui_dwm_repo: https://github.com/DigitalShooting/dwm.git
-gui_url: 127.0.0.1:{{dsv_port}}
+gui_dwm_repo: "{{remote_git_url}}dwm.git"
+gui_url: "127.0.0.1:{{dsv_port}}"
 
 
 
@@ -50,7 +50,7 @@ gui_url: 127.0.0.1:{{dsv_port}}
 ##### Network #####
 
 # ipv4 address (overwrite in ansible host file)
-networking_ip: 10.1.0.200
+networking_ip: "10.1.0.200"
 
 # ipv4 gateway, netmask and dns
 networking_gateway: "10.1.0.1"

@@ -4,6 +4,7 @@
     - ../../config/{{type}}.yaml
 
   tasks:
+    # install deps
   - name: Installing git, npm and nodejs
     apt: name={{item}} state=latest
     with_items:
@@ -12,10 +13,12 @@
     - npm
     sudo: yes
 
+    # add dsv user
   - name: Adding user dsv
     user: name=dsv shell=/bin/bash
     sudo: yes
 
+    # install dsv
   - name: Pulling dsv repo
     git: repo={{dsv_repo}} dest=/home/dsv/dsv/ force=yes version={{dsv_version}}
     become: yes
@@ -32,6 +35,7 @@
     - dscGateway.js
     - network.js
 
+    # create dsv service and start
   - name: Seting up dsv systemd service
     template: src=other/dsv.service dest=/etc/systemd/system/dsv.service owner=root group=root
     sudo: yes

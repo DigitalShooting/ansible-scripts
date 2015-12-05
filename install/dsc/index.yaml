@@ -4,6 +4,7 @@
     - ../../config/{{type}}.yaml
 
   tasks:
+    # install deps
   - name: Install git, npm, nodejs, mysql
     apt: name={{item}} state=latest
     with_items:
@@ -14,6 +15,7 @@
     - python-mysqldb
     sudo: yes
 
+    # create user dsc
   - name: Adding user dsc
     user: name=dsc shell=/bin/bash
     sudo: yes
@@ -21,6 +23,7 @@
     user: name=dsc state=present groups="dialout"
     sudo: yes
 
+    # install main dsc
   - name: Pulling dsc repo
     git: repo={{dsc_repo}} dest=/home/dsc/dsc/ force=yes version={{dsc_version}}
     become: yes
@@ -42,6 +45,7 @@
     - auth.js
     - database.js
 
+    # install mysql
   - name: Configure mysql root
     mysql_user: name=root host={{ item }} password={{ mysql_root_password }} priv=*.*:ALL,GRANT
     with_items:
@@ -56,12 +60,12 @@
   - mysql_db: name=mysql state=import target=/home/dsc/dsc/install/database.sql
     sudo: yes
 
+    # configure mysql
   - name: copy dsc setPassword SQL file
     template: src=mysql/setPassword.sql dest=/tmp/setPassword.sql owner=root group=root mode=0600
     sudo: yes
   - mysql_db: name=mysql state=import target=/tmp/setPassword.sql
     sudo: yes
-
   - name: Copy MySQL cnf
     template: src=mysql/my.server.cnf dest=/etc/mysql/my.cnf owner=root group=root mode=0600
     sudo: yes
@@ -69,6 +73,7 @@
     action: service name=mysql state=restarted enabled=true
     sudo: yes
 
+    # create service for dsc and start
   - name: Set up dsc systemd service
     template: src=other/dsc.service dest=/etc/systemd/system/dsc.service owner=root group=root
     sudo: yes

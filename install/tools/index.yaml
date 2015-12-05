@@ -5,6 +5,7 @@
     - ../../config/{{type}}.yaml
 
   tasks:
+    # install deps
   - name: Installing htop, tmux, ntp
     apt: name={{item}} state=latest
     with_items:
@@ -13,7 +14,7 @@
     - ntp
     sudo: yes
 
-
+    # configure ntp
   - name: Seting up ntp config
     template: src=etc/ntp.conf dest=/etc/ntp.conf
     sudo: yes
@@ -30,7 +31,7 @@
     service: name=ntp state=started enabled=yes
     sudo: yes
 
-
+    # configure grub without waiting
   - name: Seting up GRUB config
     template: src=etc/grub dest=/etc/default/grub
     sudo: yes

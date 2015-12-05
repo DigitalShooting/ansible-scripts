@@ -18,6 +18,7 @@
     - libxinerama-dev
     - sharutils
     - unclutter
+    - ttf-liberation
     sudo: yes
 
     # build dwm display manager

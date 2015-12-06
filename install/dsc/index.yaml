@@ -35,6 +35,9 @@
   - name: Make haering lib
     command: bash -c "cd /home/dsc/dsc/lib/Haering/ && ./buildAPI.sh"
     become: yes
+  - name: Update vaersion.tmp
+    command: bash -c "cd /home/dsc/dsc/config/ && ./setVersion.sh"
+    become: yes
     become_user: dsc
   - name: Set up dsc config
     template: src=config/{{item}} dest=/home/dsc/dsc/config/{{item}}
@@ -44,6 +47,10 @@
     - line.js
     - auth.js
     - database.js
+  - name: Copy logo
+    copy: src=../../config/logo.png dest=/home/dsc/dsc/config/logo.png
+    become: yes
+    become_user: dsc
 
     # install mysql
   - name: Configure mysql root

@@ -11,6 +11,8 @@ remote_git_url: "https://github.com/DigitalShooting/"
 # enable to skip networing settings
 skip_networing: false
 
+hardware_pi: true
+
 
 
 
@@ -20,7 +22,7 @@ skip_networing: false
 dsc_repo: "{{remote_git_url}}DSC.git"
 
 # git tag or branch to use
-dsc_version: "master"
+dsc_version: "latex"
 
 # static auth key
 dsc_key: "jvKLefsjw"

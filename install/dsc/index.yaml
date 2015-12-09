@@ -10,9 +10,16 @@
     with_items:
     - git
     - nodejs
-    - npm
     - mysql-server
     - python-mysqldb
+    - libcairo2-dev
+    - libjpeg62-turbo-dev
+    - libpango1.0-dev
+    - libgif-dev
+    - build-essential
+    - g++
+    - texlive-full
+    - cups
     sudo: yes
 
     # create user dsc
@@ -61,6 +68,7 @@
     - ::1
     - localhost
     sudo: yes
+    ignore_errors: yes
   - name: copy .my.cnf file with root password credentials
     template: src=mysql/my.cnf dest=/root/.my.cnf owner=root group=root mode=0600
     sudo: yes

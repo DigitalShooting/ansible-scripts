@@ -26,6 +26,7 @@
     sudo: yes
   - name: Write time to hardware
     command: bash -c "hwclock --systohc"
+    when: hardware_pi == false
     sudo: yes
   - name: Starting ntp systemd service
     service: name=ntp state=started enabled=yes
@@ -35,6 +36,8 @@
   - name: Seting up GRUB config
     template: src=etc/grub dest=/etc/default/grub
     sudo: yes
+    when: hardware_pi == false
   - name: Update GRUB
     command: update-grub
     sudo: yes
+    when: hardware_pi == false

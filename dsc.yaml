@@ -12,5 +12,5 @@
     - tools
     - ntp
     - grub
-    # - aptcache
+    - aptcache
     - dsc

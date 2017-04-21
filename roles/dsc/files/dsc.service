@@ -1,0 +1,15 @@
+[Unit]
+BindsTo=mongodb.service
+After=mongodb.service
+
+[Service]
+ExecStart=/usr/bin/nodejs index.js
+Restart=always
+StandardOutput=syslog
+SyslogIdentifier=dsc
+User=dsc
+Group=dsc
+WorkingDirectory=/home/dsc/dsc/
+
+[Install]
+WantedBy=multi-user.target

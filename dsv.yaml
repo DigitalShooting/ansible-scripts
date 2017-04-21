@@ -1,20 +1,19 @@
 ---
 - hosts: "dsv"
-  vars:
-    type: "dsv"
-
   vars_files:
-  - config/{{type}}.yaml
-
+  - config/main.yaml
+  - config/network.yaml
+  - config/dsv.yaml
+  - config/dsc-gateway.yaml
   remote_user: "{{remote_user}}"
-
-  tasks:
-  - set_fact: type="{{type}}"
-  - set_fact: ansible_ssh_user="{{remote_user}}" # Ansible < 2
-  - set_fact: ansible_user="{{remote_user}}" # Anible 2.0 or higher
-
-- include: install/networking/index.yaml
-- include: install/tools/index.yaml
-- include: install/gui/index.yaml
-- include: install/dsv/index.yaml
-- include: install/dsc-gateway/index.yaml
+  vars:
+    gui_url: "127.0.0.1:{{dsv_port}}"
+    dsv_dsc_gateway_url: "{{ip}}:{{dsc_gateway_port}}"
+  roles:
+    - gui
+    - tools
+    - ntp
+    - grub
+    - aptcache
+    - dsv
+    - dsc-gateway

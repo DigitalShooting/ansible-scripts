@@ -1,0 +1,74 @@
+---
+- apt: update_cache=yes
+  become: yes
+  become_user: root
+
+  # install deps
+- name: Install git, npm, nodejs, mysql
+  apt: name={{item}} state=latest
+  with_items:
+  - git
+  - mongodb-server
+  - python-mysqldb
+  - libcairo2-dev
+  - libjpeg62-turbo-dev
+  - libpango1.0-dev
+  - libgif-dev
+  - build-essential
+  - g++
+  # - texlive-full
+  - cups
+  become: yes
+  become_user: root
+
+  # create user dsc
+- name: Adding user dsc
+  user: name=dsc shell=/bin/bash
+  become: yes
+  become_user: root
+- name: Adding user dsc to dialout group...
+  user: name=dsc state=present groups="dialout"
+  become: yes
+  become_user: root
+
+# install main dsc
+- name: Pulling dsc repo
+  git: repo={{dsc_repo}} dest=/home/dsc/dsc/ force=yes recursive=yes version={{dsc_version}}
+  become: yes
+  become_user: dsc
+- name: npm rebuild
+  command: bash -c "cd /home/dsc/dsc/ && npm rebuild"
+  become: yes
+  become_user: dsc
+- name: Make haering lib
+  command: bash -c "cd /home/dsc/dsc/lib/Haering/ && ./buildAPI.sh"
+  become: yes
+  become_user: dsc
+- name: Set up dsc config
+  template: src={{item}} dest=/home/dsc/dsc/config/{{item}}
+  become: yes
+  become_user: dsc
+  with_items:
+  - line.js
+  - auth.js
+  - database.js
+  - interface.js
+- name: Copy logo
+  copy: src=files/logo.png dest=/home/dsc/dsc/config/logo.png
+  become: yes
+  become_user: dsc
+  ignore_errors: yes
+
+# create service for dsc and start
+- name: Set up dsc systemd service
+  template: src=files/dsc.service dest=/etc/systemd/system/dsc.service owner=root group=root
+  become: yes
+  become_user: root
+- name: Reload systemd
+  command: systemctl daemon-reload
+  become: yes
+  become_user: root
+- name: Restart & enable dsc systemd service
+  service: name=dsc state=restarted enabled=yes
+  become: yes
+  become_user: root

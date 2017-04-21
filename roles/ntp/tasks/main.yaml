@@ -1,0 +1,30 @@
+---
+
+- name: Installing htop, tmux, ntp
+  apt: name={{item}} state=latest
+  with_items:
+  - ntp
+  become: yes
+  become_user: root
+
+# configure ntp
+- name: Seting up ntp config
+  template: src=ntp.conf dest=/etc/ntp.conf
+  become: yes
+  become_user: root
+- name: Stoping ntp systemd service
+  service: name=ntp state=stopped enabled=yes
+  become: yes
+  become_user: root
+- name: Syncing time
+  command: bash -c "ntpd -g"
+  become: yes
+  become_user: root
+- name: Write time to hardware
+  command: bash -c "hwclock --systohc"
+  become: yes
+  become_user: root
+- name: Starting ntp systemd service
+  service: name=ntp state=started enabled=yes
+  become: yes
+  become_user: root

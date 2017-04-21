@@ -1,19 +1,16 @@
 ---
 - hosts: "dsc"
-  vars:
-    type: "dsc"
-
   vars_files:
-  - config/{{type}}.yaml
-
+  - config/main.yaml
+  - config/network.yaml
+  - config/dsc.yaml
   remote_user: "{{remote_user}}"
-
-  tasks:
-  - set_fact: type="{{type}}"
-  - set_fact: ansible_ssh_user="{{remote_user}}" # Ansible < 2
-  - set_fact: ansible_user="{{remote_user}}" # Anible 2.0 or higher
-
-- include: install/networking/index.yaml
-- include: install/tools/index.yaml
-- include: install/gui/index.yaml
-- include: install/dsc/index.yaml
+  vars:
+    gui_url: "127.0.0.1:{{dsc_port}}/?key={{dsc_key}}"
+  roles:
+    - gui
+    - tools
+    - ntp
+    - grub
+    # - aptcache
+    - dsc

@@ -1,0 +1,11 @@
+sleep 7
+
+surf {{gui_url}} &
+
+unclutter &
+
+# Disable display shutdown
+xset s off
+xset -dpms
+
+exec dwm

@@ -1,0 +1,19 @@
+---
+
+# main dsc repo url
+dsc_repo: "https://git.janniklorenz.de/diana/DSC.git"
+
+# git tag or branch to use
+dsc_version: "master"
+
+# static auth key
+dsc_key: "123"
+
+# verein label (Print)
+dsc_verein: "Verein"
+
+# stand number (overwrite in ansible host file)
+# dsc_stand: "0"
+
+# port for dsc server
+dsc_port: "3000"

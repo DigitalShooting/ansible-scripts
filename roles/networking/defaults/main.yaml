@@ -1,0 +1,9 @@
+---
+
+# ipv4 address (overwrite in ansible host file)
+networking_ip: "127.0.0.1"
+
+# ipv4 gateway, netmask and dns
+networking_gateway: "10.0.0.1"
+networking_netmask: "255.255.252.0"
+networking_nameservers: "10.0.0.1"

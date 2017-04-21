@@ -1,31 +1,13 @@
 ---
 
-##### Main #####
-
-# remote user to connect with (sudo without password required)
-remote_user: "diana"
-
-# base url for all git repos
-remote_git_url: "https://github.com/DigitalShooting/"
-
-# enable to skip networing settings
-skip_networing: false
-
-hardware_pi: true
-
-
-
-
-##### DSC #####
-
 # main dsc repo url
-dsc_repo: "{{remote_git_url}}DSC.git"
+dsc_repo: "https://git.janniklorenz.de/diana/DSC.git"
 
 # git tag or branch to use
-dsc_version: "latex"
+dsc_version: "master"
 
 # static auth key
-dsc_key: "jvKLefsjw"
+dsc_key: "346ef77b4a203ab1a457d9770acdba"
 
 # verein label (Print)
 dsc_verein: "SV Diana Dettingen"
@@ -38,38 +20,10 @@ dsc_port: "3000"
 
 
 
-
-##### GUI #####
-
-# dwm repo url
-gui_dwm_repo: "{{remote_git_url}}dwm.git"
-
-# url to start surf webbrowser
-gui_url: "127.0.0.1:{{dsc_port}}/?key={{dsc_key}}"
-
-
-
-
-##### MySQL #####
-
-# mysql root password (change before first run)
-mysql_root_password: "lorem"
-
-# mysql dsc user password (wildcard login allowed)
-mysql_dsc_password: "test2"
-
-
-
-
-##### Network #####
-
-# ipv4 address (overwrite in ansible host file)
-#networking_ip: "0.0.0.0"
-
-# ipv4 gateway, netmask and dns
-networking_gateway: "10.1.0.1"
-networking_netmask: "255.255.255.0"
-networking_nameservers: "10.1.0.1"
-
-# ntp server
-tools_ntp_server: "10.0.0.10"
+# ##### MySQL #####
+#
+# # mysql root password (change before first run)
+# mysql_root_password: "ek-pynd-oct-id-goc-v"
+#
+# # mysql dsc user password (wildcard login allowed)
+# mysql_dsc_password: "a69a6f90cda4e19c36a49aa4c3a4f84c70513547f108e5aeaf2ba7a3b23e23eb"

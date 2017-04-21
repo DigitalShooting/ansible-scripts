@@ -1,0 +1,16 @@
+---
+
+- name: Seting network config
+  template: src=interfaces dest=/etc/network/interfaces owner=root group=root
+  become: yes
+  become_user: root
+
+- name: Restarting network
+  command: bash -c "ifdown eth0 && ifup eth0"
+  become: yes
+  become_user: root
+
+- name: Updateing apt cache
+  apt: update_cache=yes
+  become: yes
+  become_user: root

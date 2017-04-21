@@ -1,0 +1,13 @@
+---
+
+# main dsv repo url
+dsv_repo: "https://git.janniklorenz.de/diana/DSV.git"
+
+# git tag or branch to use
+dsv_version: "master"
+
+# port for dsv server
+dsv_port: "3001"
+
+# dsc gateway url
+dsv_dsc_gateway_url: ""

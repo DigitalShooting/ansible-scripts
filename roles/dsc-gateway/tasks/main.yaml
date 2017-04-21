@@ -1,0 +1,48 @@
+---
+
+# install deps
+- name: Installing git, npm and nodejs
+  apt: name={{item}} state=latest
+  with_items:
+  - git
+  become: yes
+  become_user: root
+
+# add dsc-gateway user
+- name: Adding user dsc-gateway
+  user: name=dsc-gateway shell=/bin/bash
+  become: yes
+  become_user: root
+
+# install dsc-gateway
+- name: Pulling dsc-gateway repo
+  git: repo={{dsc_gateway_repo}} dest=/home/dsc-gateway/dsc-gateway/ force=yes recursive=yes version={{dsc_gateway_version}}
+  become: yes
+  become_user: dsc-gateway
+- name: npm rebuild
+  command: bash -c "cd /home/dsc-gateway/dsc-gateway/ && npm rebuild"
+  become: yes
+  become_user: dsc-gateway
+- name: Setting dsc-gateway Settings
+  template: src={{item}} dest=/home/dsc-gateway/dsc-gateway/config/{{item}}
+  become: yes
+  become_user: dsc-gateway
+  with_items:
+  - database.js
+  - network.js
+  - lines.js
+  - permissions.js
+
+# crate service and start
+- name: Seting up dsc-gateway systemd service
+  template: src=files/dsc-gateway.service dest=/etc/systemd/system/dsc-gateway.service owner=root group=root
+  become: yes
+  become_user: root
+- name: Reload systemd
+  command: systemctl daemon-reload
+  become: yes
+  become_user: root
+- name: Restarting dsc-gateway systemd service
+  service: name=dsc-gateway state=restarted enabled=yes
+  become: yes
+  become_user: root

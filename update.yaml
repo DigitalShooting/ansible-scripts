@@ -1,0 +1,12 @@
+---
+- hosts: "all"
+  vars_files:
+  - config/main.yaml
+  - config/network.yaml
+  - config/dsc.yaml
+  remote_user: "{{remote_user}}"
+  tasks:
+    - apt: update_cache=yes
+      sudo: yes
+    - apt: upgrade=dist
+      sudo: yes

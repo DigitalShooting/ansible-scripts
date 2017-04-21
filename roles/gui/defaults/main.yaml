@@ -1,0 +1,6 @@
+---
+# dwm repo url
+gui_dwm_repo: "https://git.janniklorenz.de/diana/dwm.git"
+
+# url to start surf webbrowser
+gui_url: ""

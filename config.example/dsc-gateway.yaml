@@ -1,0 +1,25 @@
+---
+
+##### DSC-Gateway #####
+
+# main dsc-gateway repo url
+dsc_gateway_repo: "https://git.janniklorenz.de/diana/DSC-Gateway.git"
+
+# git tag or branch to use
+dsc_gateway_version: "master"
+
+# port for dsc-gateway server
+dsc_gateway_port: "4000"
+
+# Permissions
+dsc_gateway_enable_setLine: false
+dsc_gateway_enable_startLine: false
+
+# list of clients
+dsc_gateway_clients:
+  - id: "stand1"
+    label: "Stand 1"
+    labelShort: "1"
+    ip: "10.1.0.130"
+    port: "3000"
+    mac: "00:12:3f:94:70:22"

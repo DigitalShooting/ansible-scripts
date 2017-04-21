@@ -1,0 +1,11 @@
+---
+
+- name: Installing htop, tmux, ntp
+  apt: name={{item}} state=latest
+  with_items:
+  - htop
+  - tmux
+  - openssl
+  - zip
+  become: yes
+  become_user: root

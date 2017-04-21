@@ -1,0 +1,18 @@
+---
+
+##### Network #####
+
+# ipv4 address (overwrite in ansible host file)
+#networking_ip: "0.0.0.0"
+
+# ipv4 gateway, netmask and dns
+networking_gateway: "10.0.0.1"
+networking_netmask: "255.255.252.0"
+networking_nameservers: "10.0.0.1"
+
+# ntp server
+ntp_server: "10.0.0.10"
+
+
+## APT Cache
+aptproxy_server: "10.0.0.10:3142"

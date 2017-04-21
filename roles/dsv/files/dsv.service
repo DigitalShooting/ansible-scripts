@@ -1,0 +1,11 @@
+[Service]
+ExecStart=/usr/bin/nodejs index.js
+Restart=always
+StandardOutput=syslog
+SyslogIdentifier=dsv
+User=dsv
+Group=dsv
+WorkingDirectory=/home/dsv/dsv/
+
+[Install]
+WantedBy=multi-user.target

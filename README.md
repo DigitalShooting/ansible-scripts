@@ -6,10 +6,7 @@ Ansible scripts to set up DS* nodes. Based on Debian 8.
 
 - dsc
 - dsv
-
 - dsm (TODO)
-- dsc-storage (TODO)
-
 
 ## Licence
 

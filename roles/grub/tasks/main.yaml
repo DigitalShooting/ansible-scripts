@@ -1,0 +1,11 @@
+---
+
+# configure grub without waiting
+- name: Seting up GRUB config
+  template: src=files/grub dest=/etc/default/grub
+  become: yes
+  become_user: root
+- name: Update GRUB
+  command: update-grub
+  become: yes
+  become_user: root

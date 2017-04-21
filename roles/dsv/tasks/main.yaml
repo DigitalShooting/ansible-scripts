@@ -1,0 +1,46 @@
+---
+
+# install deps
+- name: Installing git, npm and nodejs
+  apt: name={{item}} state=latest
+  with_items:
+  - git
+  become: yes
+  become_user: root
+
+# add dsv user
+- name: Adding user dsv
+  user: name=dsv shell=/bin/bash
+  become: yes
+  become_user: root
+
+# install dsv
+- name: Pulling dsv repo
+  git: repo={{dsv_repo}} dest=/home/dsv/dsv/ force=yes recursive=yes version={{dsv_version}}
+  become: yes
+  become_user: dsv
+- name: npm rebuild
+  command: bash -c "cd /home/dsv/dsv/ && npm rebuild"
+  become: yes
+  become_user: dsv
+- name: Setting dsv Settings
+  template: src={{item}} dest=/home/dsv/dsv/config/{{item}}
+  become: yes
+  become_user: dsv
+  with_items:
+  - dscGateway.js
+  - network.js
+
+# create dsv service and start
+- name: Seting up dsv systemd service
+  template: src=files/dsv.service dest=/etc/systemd/system/dsv.service owner=root group=root
+  become: yes
+  become_user: root
+- name: Reload systemd
+  command: systemctl daemon-reload
+  become: yes
+  become_user: root
+- name: Restarting dsv systemd service
+  service: name=dsv state=restarted enabled=yes
+  become: yes
+  become_user: root

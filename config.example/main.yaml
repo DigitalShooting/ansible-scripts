@@ -1,0 +1,9 @@
+---
+
+##### Main #####
+
+# remote user to connect with (sudo without password required)
+remote_user: "diana"
+
+# enable to skip networing settings
+skip_networing: true

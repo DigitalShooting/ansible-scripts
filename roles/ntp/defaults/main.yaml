@@ -1,0 +1,4 @@
+---
+
+# ntp server
+ntp_server: "0.debian.pool.ntp.org"

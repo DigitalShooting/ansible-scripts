@@ -1,0 +1,19 @@
+---
+#install node lts
+- name: Del old
+  command: rm -f /usr/bin/nodejs /usr/bin/npm
+  become: yes
+  become_user: root
+  ignore_errors: yes
+- name: Untar
+  unarchive: src=node-v4.2.3-linux-x64.tar.gz dest=/opt/ copy=yes
+  become: yes
+  become_user: root
+- name: Untar
+  file: src=/opt/node-v4.2.3-linux-x64/bin/{{ item.src }} dest=/usr/bin/{{ item.dest }} state=link
+  with_items:
+  - { src: 'node', dest: 'nodejs' }
+  - { src: 'node', dest: 'node' }
+  - { src: 'npm', dest: 'npm' }
+  become: yes
+  become_user: root

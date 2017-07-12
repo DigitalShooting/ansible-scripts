@@ -7,12 +7,12 @@ module.exports = {
 	/**
 		enable/ disable writing access to the lines form extern
 	*/
-	setLine:	false,
+	setLine:	{{dsc_gateway_enable_setLine}},
 
 
 	/**
 		enable/ disable access to the setPower function
 	*/
-	startLine: 	false,
+	startLine: 	{{dsc_gateway_enable_startLine}},
 
 };

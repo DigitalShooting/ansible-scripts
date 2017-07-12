@@ -19,10 +19,10 @@
   git: repo={{dsc_gateway_repo}} dest=/home/dsc-gateway/dsc-gateway/ force=yes recursive=yes version={{dsc_gateway_version}}
   become: yes
   become_user: dsc-gateway
-- name: npm rebuild
-  command: bash -c "cd /home/dsc-gateway/dsc-gateway/ && npm rebuild"
-  become: yes
-  become_user: dsc-gateway
+# - name: npm rebuild
+#   command: bash -c "cd /home/dsc-gateway/dsc-gateway/ && npm rebuild"
+#   become: yes
+#   become_user: dsc-gateway
 - name: Setting dsc-gateway Settings
   template: src={{item}} dest=/home/dsc-gateway/dsc-gateway/config/{{item}}
   become: yes
@@ -32,6 +32,15 @@
   - network.js
   - lines.js
   - permissions.js
+  - restAPI.js
+
+- name: Setting dsc-gateway Settings (restAPI)
+  template: src={{item}} dest=/home/dsc-gateway/dsc-gateway/config/{{item}}
+  become: yes
+  become_user: dsc-gateway
+  with_items:
+  - restAPI.js
+  when: dsc_gateway_relays_on == true
 
 # crate service and start
 - name: Seting up dsc-gateway systemd service
@@ -46,3 +55,5 @@
   service: name=dsc-gateway state=restarted enabled=yes
   become: yes
   become_user: root
+
+# - include: autossh.yaml

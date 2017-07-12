@@ -1,19 +1,18 @@
 ---
-- hosts: "dsv"
+- hosts: "dsm"
   vars_files:
   - config/main.yaml
   - config/network.yaml
-  - config/dsv.yaml
   - config/dsc-gateway.yaml
   remote_user: "{{remote_user}}"
   vars:
     gui_url: "127.0.0.1:{{dsv_port}}"
     dsv_dsc_gateway_url: "{{ip}}:{{dsc_gateway_port}}"
+    dsc_gateway_enable_setLine: "true"
+    dsc_gateway_enable_startLine: "true"
   roles:
-#    - gui
-#    - tools
-#    - ntp
-#    - grub
-#    - aptcache
-    # - dsv
+    # - gui
+    # - tools
+    # - ntp
+    # - grub
     - dsc-gateway

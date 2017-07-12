@@ -10,8 +10,8 @@ dsc_gateway_version: "master"
 dsc_gateway_port: "4000"
 
 # Permissions
-dsc_gateway_enable_setLine: false
-dsc_gateway_enable_startLine: false
+dsc_gateway_enable_setLine: "false"
+dsc_gateway_enable_startLine: "false"
 
 # list of clients
 dsc_gateway_clients:
@@ -27,3 +27,10 @@ dsc_gateway_clients:
     ip: "127.0.0.1"
     port: "3000"
     mac: "01:23:45:67:89:02"
+
+dsc_gateway_relays:
+  - url: "https://api.live.diana-dettingen.de"
+    user: "user"
+    password: "password"
+
+dsc_gateway_relays_on: false

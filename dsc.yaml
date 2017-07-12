@@ -8,9 +8,9 @@
   vars:
     gui_url: "127.0.0.1:{{dsc_port}}/?key={{dsc_key}}"
   roles:
-    - gui
-    - tools
-    - ntp
-    - grub
-    - aptcache
+#    - gui
+#    - tools
+#    - ntp
+#    - grub
+#    - aptcache
     - dsc
